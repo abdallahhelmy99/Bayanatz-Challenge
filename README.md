@@ -6,9 +6,8 @@ This Flutter app is designed to generate and manage digital receipts for service
 
 - Customizable Textual Message: Easily customize the fonts and styling of the textual message displayed on the receipt.
 - Adjustable Logo Size: Control the size of the logo to fit your branding requirements.
-- Local Storage: Store receipts locally on the device for easy access and offline availability.
 - Database Integration: Retrieve receipts from a NoSQL database like Firebase for seamless synchronization across multiple devices.
-- Email Confirmation: Send receipts via email as a confirmation of service, providing a convenient way to share and archive receipts.
+- Email Confirmation: Send receipts via email as a confirmation of service, providing a convenient way to share and archive receipts. (Not Implemented Yet)
 
 ## Getting Started
 
