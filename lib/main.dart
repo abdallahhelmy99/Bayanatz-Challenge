@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_application_1/Screens/ReceiptsList.dart';
 import 'Firebase/firebase_options.dart';
-import 'Screens/NewReceipt.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
