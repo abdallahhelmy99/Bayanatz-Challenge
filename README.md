@@ -26,7 +26,6 @@ The Flutter Digital Receipts app relies on the following dependencies:
 
 - `flutter`: The Flutter framework for building cross-platform applications.
 - `firebase_core`: The Flutter plugin for Firebase Core, which provides the necessary functionality for using Firebase services (optional, for database integration).
-- `flutter_email_sender`: A Flutter plugin for sending emails (optional, for email confirmation).
 
 
 Make sure to include these dependencies in your project's `pubspec.yaml` file and run `flutter pub get` to install them.
