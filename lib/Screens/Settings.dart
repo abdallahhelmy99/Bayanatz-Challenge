@@ -1,10 +1,8 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Classes/Colors.dart';
 import 'package:flutter_application_1/Customizable/Template.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-import 'DigitalReceipt.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -19,7 +17,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   TextEditingController logoWidthController = TextEditingController();
   TextEditingController logoHeightController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     fontSizeController.text = Template.font.toString();
@@ -27,16 +24,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
     logoHeightController.text = Template.logoHeight.toString();
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 65,
         backgroundColor: AppColors.primaryColor,
         elevation: 0,
         leading: Padding(
-            padding: const EdgeInsets.only(left: 12),
+            padding: const EdgeInsets.only(left: 15),
             child: FloatingActionButton(
-              onPressed: () { Navigator.pop(context); }, 
-              child: const Icon(Icons.arrow_back_ios_new, size: 25),
+              onPressed: () { Navigator.pop(context); },
               backgroundColor: Colors.indigoAccent,
-              mini: true,
+              mini: true, 
+              child: const Icon(Icons.arrow_back_ios_new, color: Colors.white,),
             ),
           ),
 

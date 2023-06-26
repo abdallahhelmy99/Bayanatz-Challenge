@@ -44,6 +44,9 @@ dependencies:
   flutter_expandable_fab: ^1.8.1
   native_screenshot: ^1.0.0
   permission_handler: ^10.3.0
+  intl: ^0.18.1
+  firebase_auth: ^4.6.3
+  firebase_database: ^10.2.3
 
 dev_dependencies:
   flutter_test:

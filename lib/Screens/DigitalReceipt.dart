@@ -3,16 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Widgets/DetailsCard.dart';
 import 'package:flutter_application_1/Widgets/TextualMessage.dart';
 import 'package:flutter_application_1/Widgets/StatusCard.dart';
-import 'package:flutter_application_1/main.dart';
 import '../Classes/Colors.dart';
-import 'package:avatar_glow/avatar_glow.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:firebase_core/firebase_core.dart';
-import '../Firebase/firebase_options.dart';
-import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import '../Buttons/ExpandableFAB.dart';
-import 'package:native_screenshot/native_screenshot.dart';
-
 
 class DigitalReceipt extends StatefulWidget {
   final dynamic cost;
@@ -31,9 +23,6 @@ class DigitalReceipt extends StatefulWidget {
     this.referenceNum,
     this.id,
     });
-  
-  
-
   @override
   State<DigitalReceipt> createState() => _DigitalReceiptState();
 }
@@ -62,13 +51,8 @@ class _DigitalReceiptState extends State<DigitalReceipt> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: FloatingActionButton(
-                    onPressed: () {
-                      Navigator.pop(context);   //Navigate back to the previous screen
-                      setState(() {
-                        
-                      });
-                    },
-                    child: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
+                    onPressed: () { Navigator.pop(context); },  //Navigate back to the previous screen
+                    child: const Icon(Icons.arrow_back_ios_new_rounded, size: 20, color: Colors.white,),
                     backgroundColor: Colors.indigoAccent,
                     mini: true,
                   ),

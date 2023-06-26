@@ -1,11 +1,15 @@
-// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, unused_local_variable, sort_child_properties_last
+// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, unused_local_variable, sort_child_properties_last, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Screens/NewReceipt.dart';
 import 'package:flutter_application_1/Screens/Settings.dart';
 import 'DigitalReceipt.dart';
 import '../Classes/Colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import '../Classes/ScreenSize.dart';
+import 'package:intl/intl.dart';
+
 
 class ReceiptsList extends StatefulWidget {
   const ReceiptsList({Key? key}) : super(key: key);
@@ -17,27 +21,33 @@ class ReceiptsList extends StatefulWidget {
 class _ReceiptsListState extends State<ReceiptsList> {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width; //Use this to make the card width responsive
-    double screenHeight = MediaQuery.of(context).size.height; //Use this to make the card height responsive
+    // double screenWidth = MediaQuery.of(context).size.width; //Use this to make the card width responsive
+    // double screenHeight = MediaQuery.of(context).size.height; //Use this to make the card height responsive
+    final ScreenSize screenSize = ScreenSize(); // ScreenSize class instance (Singleton)
+    DateTime now = DateTime.now(); //Get the current date
+    String monthName = DateFormat('MMMM').format(now); //Get the current month name
+    
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
+      floatingActionButton: FloatingActionButton(
+      onPressed: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => NewReceipt()),) ;
+      },
+      backgroundColor: Colors.indigoAccent,
+      child: Icon(Icons.add, color: Colors.white,),
+    ),
       appBar: AppBar(
         toolbarHeight: 65,
         backgroundColor: AppColors.primaryColor,
         elevation: 0,
         actions: [
-
           // Settings Button navigate to the settings screen --------------------------------------------
           Padding(
             padding: const EdgeInsets.only(right: 12),
             child: FloatingActionButton(
               onPressed: () { //navigate to settings screen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SettingsScreen()),
-                ) 
-              ; }, 
-              child: const Icon(Icons.settings_outlined, size: 25),
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsScreen()),) ; }, 
+              child: const Icon(Icons.settings_outlined, color: Colors.white,),
               backgroundColor: Colors.indigoAccent,
               mini: true,
             ),
@@ -50,11 +60,11 @@ class _ReceiptsListState extends State<ReceiptsList> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset( 'assets/receipt.svg', height: 80, width: 80, color: Colors.indigo,), //Receipt Icon
+              SvgPicture.asset( 'assets/receipt.svg', height: 70, width: 70, color: Colors.indigo,), //Receipt Icon
               const SizedBox(height: 20,),
 
               //Title Name -------------------------------------------------------------------
-              GradientText('PAYMENT HISTORY',
+              GradientText('RECIEPTS',
                   colors: const [
                     Colors.indigo,
                     Colors.indigoAccent,
@@ -70,14 +80,15 @@ class _ReceiptsListState extends State<ReceiptsList> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "${DateTime.now().day} . ${DateTime.now().month} . ${DateTime.now().year}",
-                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    "${DateTime.now().day} of $monthName ${DateTime.now().year}",
+                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey),
+                    
                   ),
                   const SizedBox(width: 15,),
                   Container(
-                    width: screenWidth * 0.6,
+                    width: screenSize.screenWidth! * 0.5,
                     height: 1,
-                    color: Colors.black,
+                    color: Colors.grey,
                   ),
                 ],
               ),
@@ -87,7 +98,7 @@ class _ReceiptsListState extends State<ReceiptsList> {
           ),
 
           // Spacing Between Date and List
-          SizedBox(height: screenHeight * 0.05,),
+          SizedBox(height: screenSize.screenHeight! / 32,),
 
           
           Flexible(
@@ -143,7 +154,7 @@ class _ReceiptsListState extends State<ReceiptsList> {
                     return Padding(
                       padding: const EdgeInsets.only(left: 5, right: 5),
                       child: SizedBox(
-                        height: screenHeight * 0.13,
+                        height: screenSize.screenHeight! * 0.13,
                         /*  GestureDetector to navigate to make the card clickable
                             so navigate to the digital receipt screen */
                         child: GestureDetector(
@@ -175,9 +186,9 @@ class _ReceiptsListState extends State<ReceiptsList> {
                                   width: 15,
                                 ),
 
-                                // First Icon Picture on the card
+                                // Status Icon Picture on the card ----------------------------------------------------
                                 SvgPicture.asset( status == 'Success' ? "assets/success_icon.svg" : "assets/failed_icon.svg", width: 30, height: 30, ),
-                                // First Icon Picture on the card
+                                // Status Icon Picture on the card ----------------------------------------------------
                                 
                                 const SizedBox(width: 15,),
                                 Column(
@@ -192,7 +203,7 @@ class _ReceiptsListState extends State<ReceiptsList> {
                                 ),
                                 const Spacer(),
                                 
-                                // Money spent (Cost) on the card tail
+                                // Money spent (Cost) on the card tail ----------------------------------------------------
                                 Padding(
                                   padding: const EdgeInsets.only(right: 20),
                                   child: Text('-$cost EGP',
@@ -201,7 +212,7 @@ class _ReceiptsListState extends State<ReceiptsList> {
                                           fontWeight: FontWeight.normal,
                                           color: status == 'Success' ? Colors.green : Colors.red)),
                                 ),
-                                // Money spent (Cost) on the card tail
+                                // Money spent (Cost) on the card tail ----------------------------------------------------
 
                               ],
                             ),

@@ -57,6 +57,7 @@ class _ExpandableFloatingActionButtonState
           child: AnimatedIcon(
             icon: AnimatedIcons.menu_close,
             progress: _animation,
+            color: Colors.white,
           ),
         ),
       ],
@@ -71,20 +72,17 @@ class _ExpandableFloatingActionButtonState
         onPressed: () {
           // Action 1
         },
-        child: const Icon(Icons.email_outlined),
+        child: const Icon(Icons.email_outlined, color: Colors.white),
       ),
       const SizedBox(height: 16),
       FloatingActionButton(
         backgroundColor: Colors.indigoAccent,
         onPressed: () async {
+          // Save screenshot to gallery - Save Receipt to internal storage
           String? path = await NativeScreenshot.takeScreenshot();
-          //PermissionStatus permissionResult = await Permission.accessMediaLocation();
-          //if (permissionResult == PermissionStatus.authorized){
-            // code of read or write file in external storage (SD card)
-          //}
           debugPrint('Screenshot taken, path: $path');
         },
-        child: const Icon(Icons.save_alt_outlined),
+        child: const Icon(Icons.save_alt_outlined, color: Colors.white),
       ),
       const SizedBox(height: 16),
     ];
