@@ -112,11 +112,7 @@ class _ReceiptsListState extends State<ReceiptsList> {
                   return Center(
                     child: Column(
                       children: [
-                        Image.asset(
-                          'asstes/noData.jpg',
-                          height: 200,
-                          width: 200,
-                        ),
+                        Image.asset('assets/noData.jpg', height: 200, width: 200,),
                         const SizedBox(
                           height: 20,
                         ),
@@ -130,7 +126,7 @@ class _ReceiptsListState extends State<ReceiptsList> {
 
                 // Connection State ----------------------------------------------------
                 if (!snapshot.hasData) {
-                  return Center(child: Image.asset( 'asstes/noData.jpg', height: 200, width: 200,),);
+                  return Center(child: Image.asset( 'assets/noData.jpg', height: 200, width: 200,),);
                 }
                 // Connection State ----------------------------------------------------
 
