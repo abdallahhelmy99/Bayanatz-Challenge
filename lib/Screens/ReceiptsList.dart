@@ -21,9 +21,8 @@ class ReceiptsList extends StatefulWidget {
 class _ReceiptsListState extends State<ReceiptsList> {
   @override
   Widget build(BuildContext context) {
-    // double screenWidth = MediaQuery.of(context).size.width; //Use this to make the card width responsive
-    // double screenHeight = MediaQuery.of(context).size.height; //Use this to make the card height responsive
     final ScreenSize screenSize = ScreenSize(); // ScreenSize class instance (Singleton)
+    
     DateTime now = DateTime.now(); //Get the current date
     String monthName = DateFormat('MMMM').format(now); //Get the current month name
     
